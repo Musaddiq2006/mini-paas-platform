@@ -1,0 +1,36 @@
+body{
+    background-color: mediumslateblue;
+}
+.password{
+    padding: 10px;
+    background-color: antiquewhite;
+    height: fit-content;    
+    width: fit-content;  
+}
+nav{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;  
+    background-color:bisque;
+    color: mediumslateblue; 
+    padding: 20px;
+}
+p{
+    font-weight: 700;
+    font-size: 30px;
+}
+.values{
+    display: flex;
+}
+footer{
+    font-weight: 700;
+    background-color:bisque;
+    color: mediumslateblue;
+    text-align:center;
+    padding: 15px;
+}
+section h3{
+    padding: 20px;
+    border: 2px solid blueviolet;
+    margin: 5px;
+}

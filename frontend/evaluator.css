@@ -34,3 +34,15 @@ section h3{
     border: 2px solid blueviolet;
     margin: 5px;
 }
+/* The wrapper div stretches across the entire screen */
+#modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95); /* Dims the dashboard behind it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

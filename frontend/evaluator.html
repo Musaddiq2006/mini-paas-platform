@@ -17,12 +17,13 @@
             </div>  
             <a href="index.html">Home Page</a>
     </nav>
-   <p>Enter master PIN to view student submissions.</p>
-
-    <div class="password">
-        <input type="password" id="evaluatorPin" placeholder="Enter password">
-        <br>
-        <button onclick=unlockEvaluator() id="loginBtn">Unlock</button>
+    <div id="modalOverlay">
+        <p>Enter master PIN to view student submissions.</p>
+        <div class="password">
+            <input type="password" id="evaluatorPin" placeholder="Enter password">
+            <br>
+            <button onclick=unlockEvaluator() id="loginBtn">Unlock</button>
+        </div>
     </div>
     <br><br>
     <section>

@@ -9,18 +9,20 @@
 <body>
     <nav> 
             <div class="logo">
-                <img src="#">SM AHMED'S PaaS
+            <img src="#">SM AHMED'S PaaS
             </img>
             </div>
             <div class="links">
                 <a href="#">About</a>
             </div>  
+            <a href="index.html">Home Page</a>
     </nav>
    <p>Enter master PIN to view student submissions.</p>
+
     <div class="password">
-        <input type="password" placeholder="Enter password">
+        <input type="password" id="evaluatorPin" placeholder="Enter password">
         <br>
-        <button id="loginBtn">Unlock</button>
+        <button onclick=unlockEvaluator() id="loginBtn">Unlock</button>
     </div>
     <br><br>
     <section>
@@ -49,5 +51,6 @@
         <br>
         Private PaaS Control Plane | Spring Boot & Docker Architecture
     </footer>
+    <script src="app.js"></script>
 </body>
 </html>

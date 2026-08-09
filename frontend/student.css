@@ -1,0 +1,15 @@
+nav{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;  
+    background-color:bisque;
+    color: mediumslateblue; 
+    padding: 20px;
+}
+footer{
+    font-weight: 700;
+    background-color:bisque;
+    color: mediumslateblue;
+    text-align:center;
+    padding: 15px;
+}

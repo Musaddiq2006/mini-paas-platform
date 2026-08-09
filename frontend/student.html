@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Upload Portal</title>
+    <link rel="stylesheet" href="student.css">
 </head>
 <body bgcolor="mediumslateblue">
     <nav>
@@ -15,10 +16,7 @@
     </nav>
     <section>
          <form>
-            <textarea name="techstack" cols="50" rows="2">
-                ENTER PROJECT NAME
-            </textarea>
-        </form>
+            <input type="text" placeholder="ENTER PROJECT NAME" id="projectName">
         <select multiple name=menu size=3>
             <option>
                 Python (Flask/FastAPI)
@@ -34,11 +32,12 @@
             </option>
         </select>
         <br><br>
-        <input type="file">
+        <input type="file" id="zipFile">
         <br><br>
-        <button>
+        <button onclick="handleUpload()">
             Upload & Deploy Project
         </button>
+        </form>
     </section>
         <br>
     <div class="Deployments">
@@ -57,5 +56,6 @@
         <br>
         Private PaaS Control Plane | Spring Boot & Docker Architecture
     </footer>
+    <script src="app.js"></script>
 </body>
 </html>

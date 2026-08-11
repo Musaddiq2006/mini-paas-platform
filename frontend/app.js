@@ -1,4 +1,7 @@
 function handleUpload(){
+
+    if(event) event.preventDefault();
+    
     const projectName = document.getElementById("projectName").value;
     const zipFile = document.getElementById("zipFile");
     if(projectName.trim()==""){
@@ -15,11 +18,10 @@ function handleUpload(){
 }
 function unlockEvaluator(){
     const pinInput= document.getElementById("evaluatorPin").value;
-    const overlay = document.getElementById("modalOverlay");
+    const overlay = document.getElementById("modalOverlay");/*dims bg*/
     if(pinInput==="1234"){
         overlay.style.display="none";
-        alert("Permission Granted!");
-        
+        alert("Permission Granted!");  
     }
     else{
         alert("Incorrect PIN! Try Again")

@@ -17,24 +17,16 @@
     <section>
          <form>
             <input type="text" placeholder="ENTER PROJECT NAME" id="projectName">
-        <select multiple name=menu size=3>
-            <option>
-                Python (Flask/FastAPI)
-            </option>
-            <option>
-                Java Spring Boot 
-            </option>
-            <option>
-                Static HTML/CSS/JS
-            </option>
-            <option>
-                C/C++ Web
-            </option>
-        </select>
+                <select id="techStack">
+                <option value="Python" selected>Python (Flask/FastAPI)</option>
+                <option value="Java">Java Spring Boot</option>
+                <option value="Static HTML">Static HTML/CSS/JS</option>
+                <option value="C/C++">C/C++ Web</option>
+            </select>
         <br><br>
         <input type="file" id="zipFile">
         <br><br>
-        <button onclick="handleUpload()">
+        <button type="submit" onclick="handleUpload(event)">
             Upload & Deploy Project
         </button>
         </form>
@@ -44,7 +36,7 @@
         <div id="noDeployments" style="background-color: #f8f9fa; border: 1px dashed #cccccc; padding: 15px; text-align: center; margin-top: 15px; border-radius: 5px;">
             <p style="margin: 0; color: #666666;">📁 No active deployments yet. Fill out the form above to deploy your first container!</p>
         </div>
-        <table border="1 solid black">
+        <table border="1">
            <tr>
             <td>Project Name</td>
             <td>Upload Time</td>

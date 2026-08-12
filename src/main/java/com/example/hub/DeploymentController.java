@@ -27,6 +27,7 @@ public class DeploymentController {
             response.put("message","File is Empty!");
             return ResponseEntity.badRequest().body(response);
          }
+         try{
          System.out.println("==========================================");
         System.out.println(" NEW DEPLOYMENT RECEIVED!");
         System.out.println("Project Name : " + projectName);
@@ -40,5 +41,10 @@ public class DeploymentController {
         response.put("assignedPort", "8001");
 
         return ResponseEntity.ok(response);
+    } catch (Exception e) {
+            response.put("status", "ERROR");
+            response.put("message", "Failed to save file: " + e.getMessage());
+            return ResponseEntity.internalServerError().body(response);
+        }
     }
 }

@@ -1,10 +1,12 @@
-function handleUpload(){
+async function handleUpload(event){
 
     if(event) event.preventDefault();
-    
+
     const projectName = document.getElementById("projectName").value;
     const zipFile = document.getElementById("zipFile");
-    if(projectName.trim()==""){
+    const techStackSelect = document.getElementById("techStack");
+
+    if(projectName.trim()===""){
         alert("Please Enter a project Name!");
         return;
     }
@@ -12,9 +14,31 @@ function handleUpload(){
         alert("Please upload a zip file!");
         return;
     }
-    const fileName = zipFile.files[0].name;
-    alert("Project: "+ projectName+ " with file: "+ fileName+ " ready for deployment");
+   
+    const techStackValue = techStackSelect.value;
+    const fileSelected = zipFile.files[0];
+    const formData= new FormData;
+    formData.append("projectName",projectName);
+    formData.append("techStack",techStack);
+    formData.append("file",fileSelected);
 
+    try{
+        const response = await fetch("http://localhost:5050/api/deploy", {
+            method: "POST",
+            body: formData
+        });
+        const data = await response.json();
+        if(response.ok && data.status==="SUCCESS"){
+            alert(`${data.message}\nAssigned Port: ${data.assignedPort}`);
+        }
+        else{
+            alert(" Failed to process upload.")
+        }
+    }
+    catch(error)
+    {
+        console.error("Network Error!");
+    }
 }
 function unlockEvaluator(){
     const pinInput= document.getElementById("evaluatorPin").value;

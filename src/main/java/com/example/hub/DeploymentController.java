@@ -3,6 +3,7 @@ package com.example.hub;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api")
 @CrossOrigin(origins="*")
 public class DeploymentController {
+    @Autowired
+    private FileStorageService fileStorageService;
     @PostMapping("/deploy")
 
     public ResponseEntity<Map<String, String>> handleDeployment(
@@ -28,12 +31,13 @@ public class DeploymentController {
             return ResponseEntity.badRequest().body(response);
          }
          try{
+            String savedPath = fileStorageService.saveAndExtractFile(file, projectName);
          System.out.println("==========================================");
         System.out.println(" NEW DEPLOYMENT RECEIVED!");
         System.out.println("Project Name : " + projectName);
         System.out.println("Tech Stack   : " + techStack);
         System.out.println("File Name    : " + file.getOriginalFilename());
-        System.out.println("File Size    : " + file.getSize() + " bytes");
+        System.out.println("Saved Path   : " + savedPath);
         System.out.println("==========================================");
 
         response.put("status","SUCCESS");

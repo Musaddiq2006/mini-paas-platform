@@ -1,31 +1,39 @@
-# Mini Paas Platform
-Paste this markdown content inside README.md. It covers everything built up to today:
-
-Markdown
 # Private PaaS Control Plane
 
-A self-hosted, lightweight Platform as a Service (PaaS) built with **Spring Boot**, **HTML/JavaScript**, and **Docker**.
+A self-hosted, lightweight Platform as a Service (PaaS) built with **Spring Boot**, **HTML/CSS/JS**, and **Docker**.
 
 ---
 
-## 🛠️ Current Status (What's Built)
+## 🛠️ Frontend Architecture & Portals
 
-- **Student Portal (`student.html` & `app.js`)**: Interactive UI for submitting project names, selecting tech stacks (Python, Java, Static HTML, C++), and uploading `.zip` source files.
-- **REST Control Plane (`DeploymentController.java`)**: Spring Boot backend handling multipart uploads on `http://localhost:5050/api/deploy`.
-- **Zip Storage Engine (`FileStorageService.java`)**: Automatically receives uploaded `.zip` archives, unzips their contents into `uploads/<projectName>/`, and cleans up the original `.zip` file.
+The frontend consists of three core pages:
+
+1. **Home Landing Page (`index.html`)**: Navigation hub directing users to either the Student or Evaluator portal with feature cards explaining the PaaS workflow.
+2. **Student Upload Portal (`student.html`)**: Form interface for students to submit project details, pick a tech stack (Python, Java, Static HTML, C++), and upload `.zip` source archives.
+3. **Evaluator Portal (`evaluator.html`)**: PIN-protected dashboard (`modalOverlay`) displaying real-time submission statistics (Total Submissions, Active Containers, Pending Evaluations) and a grading table.
 
 ---
 
-## 🏗️ Architecture Flow
+## ⚙️ Backend Engine (Spring Boot)
+
+- **REST Control Plane (`DeploymentController.java`)**: Handles incoming multipart upload requests on `http://localhost:5050/api/deploy`.
+- **Zip Storage Engine (`FileStorageService.java`)**: Receives uploaded `.zip` archives, extracts source files into `uploads/<projectName>/`, and cleans up the temporary `.zip` file.
+
+---
+
+## 🏗️ System Data Flow
 
 ```text
-[ student.html / app.js ] ──(FormData)──> [ DeploymentController ]
-                                                  │
-                                                  ▼
-                                       [ FileStorageService ]
-                                                  │
-                                                  ▼
-                                      Unzips to: /uploads/<projectName>/
+               ┌──> [ student.html ] ──(Upload Zip)──┐
+               │                                      │
+[ index.html ]─┤                                      ▼
+               │                           [ DeploymentController ]
+               │                                      │
+               └──> [ evaluator.html ]                ▼
+                     (PIN Protected)       [ FileStorageService ]
+                                                      │
+                                                      ▼
+                                           Unzips to: /uploads/<projectName>/
 🚀 How to Run Locally
 1. Prerequisites
 Java 17+ (or Java 25)

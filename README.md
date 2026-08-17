@@ -1,7 +1,3 @@
-# Mini Paas Platform
-Paste this markdown content inside README.md. It covers everything built up to today:
-
-Markdown
 # Private PaaS Control Plane
 
 A self-hosted, lightweight Platform as a Service (PaaS) built with **Spring Boot**, **HTML/JavaScript**, and **Docker**.
